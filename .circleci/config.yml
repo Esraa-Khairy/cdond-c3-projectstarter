@@ -132,7 +132,7 @@ jobs:
     docker:
       - image: cimg/python:3.10
     steps:
-      - Checkout 
+      - checkout
       - install_awscli
 
       - run:
