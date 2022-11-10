@@ -173,22 +173,18 @@ jobs:
       - image: cimg/python:3.10
     steps:
       - checkout
+      - install_awscli
+      - install_ansible
       - add_ssh_keys:
           fingerprints: ["96:2d:db:5d:2c:18:77:2a:62:22:e2:0b:62:2e:5a:5b"]
       
       - attach_workspace:
           at: ~/
       - run:
-          name: Install dependencies
-          command: |
-            - install_awscli
-            - install_ansible
-      - run:
           name: Configure server
           command: |
             cd .circleci/ansible
             cat inventory.txt
-
             ansible-playbook -i inventory.txt configure-server.yml
       # Here's where you will add some code to rollback on failure  
       - destroy-environment
