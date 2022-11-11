@@ -224,7 +224,7 @@ jobs:
 
   run-migrations:
     docker:
-      - image: cimg/python:3.1
+      - image: cimg/python:3.10
     steps:
       - checkout
       - install_awscli
